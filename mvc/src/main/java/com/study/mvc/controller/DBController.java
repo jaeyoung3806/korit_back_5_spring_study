@@ -1,5 +1,6 @@
 package com.study.mvc.controller;
 
+import com.study.mvc.aop.annotation.TimeAspect;
 import com.study.mvc.dto.DBStudyReqDto;
 import com.study.mvc.service.DBStudyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class DBController {
     public ResponseEntity<?> selectStudy(@RequestParam String name) {
         return ResponseEntity.ok(dbStudyService.findStudyByName(name));
     }
-
+    @TimeAspect
     @GetMapping("/select/studys")
     public ResponseEntity<?> selectStudyAll() {
         return ResponseEntity.ok(dbStudyService.findAll());
